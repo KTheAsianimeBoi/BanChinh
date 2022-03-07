@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "axios": "^0.26.0",
+    "formik": "^2.2.9",
     "react": "17.0.2",
     "react-native": "0.66.4",
     "react-native-linear-gradient": "^2.5.6",

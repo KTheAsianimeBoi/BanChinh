@@ -1,31 +1,48 @@
-import {Text, View, StyleSheet, TextInput as RNTextInput} from 'react-native';
+import {
+  Text,
+  View,
+  StyleSheet,
+  TextInput as RNTextInput,
+  TouchableOpacity,
+} from 'react-native';
 import React, {Component} from 'react';
 import EntypoIcon from 'react-native-vector-icons/Entypo';
 
 export default class TextInput extends Component {
+  state = {
+    secureTextEntry: this.props.secureTextEntry,
+  };
+
   render() {
     const {title, password, errorMsg} = this.props;
+    const {secureTextEntry} = this.state;
     return (
       <View style={styles.wrapperTextInput}>
-        <RNTextInput
-          style={[
-            styles.textInputContainer,
-            !!errorMsg && {backgroundColor: '#f9c8c8'},
-          ]}
-          {...this.props}
-        />
-        <Text style={styles.textInputTitle}>{title}</Text>
-        {password && (
-          <EntypoIcon
-            name="eye"
-            color="#bbb"
-            size={20}
-            style={styles.rightIcon}
+        <View>
+          <RNTextInput
+            {...this.props}
+            style={[
+              styles.textInputContainer,
+              !!errorMsg && styles.errorBackground,
+            ]}
+            secureTextEntry={secureTextEntry}
           />
-        )}
-        {!!errorMsg && (
-          <Text style={{color: 'red', marginTop: 5}}>* {errorMsg}</Text>
-        )}
+          <Text style={styles.textInputTitle}>{title}</Text>
+          {password && (
+            <TouchableOpacity
+              onPress={() =>
+                this.setState({secureTextEntry: !this.state.secureTextEntry})
+              }>
+              <EntypoIcon
+                name="eye"
+                color="#bbb"
+                size={20}
+                style={styles.rightIcon}
+              />
+            </TouchableOpacity>
+          )}
+        </View>
+        {!!errorMsg && <Text style={styles.errorText}>* {errorMsg}</Text>}
       </View>
     );
   }
@@ -50,7 +67,9 @@ const styles = StyleSheet.create({
   },
   rightIcon: {
     position: 'absolute',
-    bottom: 25,
+    bottom: 15,
     right: 20,
   },
+  errorBackground: {backgroundColor: '#f9c8c8'},
+  errorText: {color: 'red', marginTop: 5},
 });

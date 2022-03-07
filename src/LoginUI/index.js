@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
 import LoginUI from './Login';
 import Register from './Register';
+import RegisterFormik from './RegisterFormik';
 
 export default class LoginScreen extends Component {
   state = {
-    isShowLoginForm: true,
+    isShowLoginForm: false,
   };
 
   navigate = () =>
@@ -17,7 +18,7 @@ export default class LoginScreen extends Component {
         {isShowLoginForm ? (
           <LoginUI navigate={this.navigate} />
         ) : (
-          <Register navigate={this.navigate} />
+          <RegisterFormik navigate={this.navigate} />
         )}
       </>
     );
