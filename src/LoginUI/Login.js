@@ -33,7 +33,9 @@ export default class LoginUI extends Component {
         <View style={styles.footer}>
           <Text style={styles.footerText}>
             Don't have an account?{' '}
-            <Text style={styles.footerTextButton} onPress={this.props.navigate}>
+            <Text
+              style={styles.footerTextButton}
+              onPress={() => this.props.navigation.navigate('RegisterScreen')}>
               Register!
             </Text>
           </Text>

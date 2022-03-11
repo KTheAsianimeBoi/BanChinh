@@ -14,8 +14,10 @@ export default class TextInput extends Component {
   };
 
   render() {
-    const {title, password, errorMsg} = this.props;
+    const {title, password, errorMsg, touched} = this.props;
     const {secureTextEntry} = this.state;
+
+    const isShowError = !!errorMsg && touched;
     return (
       <View style={styles.wrapperTextInput}>
         <View>
@@ -23,7 +25,7 @@ export default class TextInput extends Component {
             {...this.props}
             style={[
               styles.textInputContainer,
-              !!errorMsg && styles.errorBackground,
+              isShowError && styles.errorBackground,
             ]}
             secureTextEntry={secureTextEntry}
           />
@@ -42,7 +44,7 @@ export default class TextInput extends Component {
             </TouchableOpacity>
           )}
         </View>
-        {!!errorMsg && <Text style={styles.errorText}>* {errorMsg}</Text>}
+        {isShowError && <Text style={styles.errorText}>* {errorMsg}</Text>}
       </View>
     );
   }
