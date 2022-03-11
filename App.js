@@ -23,6 +23,7 @@ import DemoRedux from './src/DemoRedux';
 import Lifecycle from './src/Lifecycle';
 import DemoCallAPI from './src/DemoCallAPI';
 import LoginScreen from './src/LoginUI';
+import RootApp from './src/Navigation';
 
 const App = () => {
   return (
@@ -46,7 +47,9 @@ const App = () => {
       {/* <Lifecycle /> */}
       {/* <DemoRedux /> */}
       {/* <DemoCallAPI /> */}
-      <LoginScreen />
+      {/* <LoginScreen />
+       */}
+      <RootApp />
     </Provider>
   );
 };

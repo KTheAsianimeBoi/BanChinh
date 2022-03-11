@@ -32,7 +32,7 @@ export default class RegisterFormik extends Component {
         <Formik
           initialValues={{email: '', password: '', name: '', phone: ''}}
           onSubmit={this.handleSubmit}>
-          {({values, handleChange, handleSubmit}) => {
+          {({values, handleChange, handleSubmit, touched, errors}) => {
             return (
               <View style={styles.loginForm}>
                 <TextInput
